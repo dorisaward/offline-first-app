@@ -6,7 +6,7 @@ exports[`renders the header renders 1`] = `
     style={
       {
         "alignItems": "center",
-        "flex": 1,
+        "paddingBottom": 10,
       }
     }
   >

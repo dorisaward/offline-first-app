@@ -11,7 +11,7 @@ export const Header = () => {
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
-    flex: 1,
+    paddingBottom: 10,
   },
   text: {
     fontSize: 56,

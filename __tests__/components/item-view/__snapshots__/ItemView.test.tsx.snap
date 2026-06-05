@@ -36,7 +36,7 @@ exports[`renders ItemView renders 1`] = `
         "borderColor": "#03296f",
         "borderRadius": 20,
         "borderWidth": 1,
-        "flex": 2,
+        "flex": 1,
         "flexDirection": "row",
         "marginBottom": 16,
         "marginHorizontal": 16,
@@ -108,6 +108,7 @@ exports[`renders ItemView renders 1`] = `
         <Text
           style={
             {
+              "alignSelf": "center",
               "color": "#9CA3AF",
             }
           }
@@ -148,6 +149,7 @@ exports[`renders ItemView renders 1`] = `
         <Text
           style={
             {
+              "alignSelf": "center",
               "color": "#9CA3AF",
             }
           }
