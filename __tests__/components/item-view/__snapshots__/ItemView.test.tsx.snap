@@ -1,0 +1,161 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders ItemView renders 1`] = `
+<>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "backgroundColor": "#FFFFFF",
+        "borderColor": "#03296f",
+        "borderRadius": 20,
+        "borderWidth": 1,
+        "flex": 2,
+        "flexDirection": "row",
+        "marginBottom": 16,
+        "marginHorizontal": 16,
+        "opacity": 1,
+        "padding": 16,
+      }
+    }
+  >
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "flex": 1,
+          "gap": 6,
+        }
+      }
+    >
+      <Text
+        style={
+          {
+            "color": "#6B7280",
+          }
+        }
+      >
+        ID
+      </Text>
+      <View>
+        <Text
+          style={
+            {
+              "color": "#111827",
+              "fontSize": 28,
+            }
+          }
+        >
+          cattle
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "flex": 1,
+          "gap": 6,
+        }
+      }
+    >
+      <Text
+        style={
+          {
+            "color": "#6B7280",
+          }
+        }
+      >
+        Weight
+      </Text>
+      <View>
+        <Text
+          style={
+            {
+              "color": "#111827",
+              "fontSize": 28,
+            }
+          }
+        >
+          999
+        </Text>
+        <Text
+          style={
+            {
+              "color": "#9CA3AF",
+            }
+          }
+        >
+          kg
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "flex": 1,
+          "gap": 6,
+        }
+      }
+    >
+      <Text
+        style={
+          {
+            "color": "#6B7280",
+          }
+        }
+      >
+        Age
+      </Text>
+      <View>
+        <Text
+          style={
+            {
+              "color": "#111827",
+              "fontSize": 28,
+            }
+          }
+        >
+          99
+        </Text>
+        <Text
+          style={
+            {
+              "color": "#9CA3AF",
+            }
+          }
+        >
+          months
+        </Text>
+      </View>
+    </View>
+  </View>
+</>
+`;

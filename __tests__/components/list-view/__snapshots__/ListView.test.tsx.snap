@@ -1,0 +1,235 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders ListView renders 1`] = `
+<>
+  <RCTScrollView
+    data={
+      [
+        {
+          "age": 36,
+          "id": "1",
+          "weight": 721,
+        },
+        {
+          "age": 30,
+          "id": "2",
+          "weight": 682,
+        },
+        {
+          "age": 42,
+          "id": "3",
+          "weight": 753,
+        },
+        {
+          "age": 28,
+          "id": "4",
+          "weight": 694,
+        },
+        {
+          "age": 34,
+          "id": "5",
+          "weight": 715,
+        },
+        {
+          "age": 26,
+          "id": "6",
+          "weight": 656,
+        },
+        {
+          "age": 48,
+          "id": "7",
+          "weight": 787,
+        },
+        {
+          "age": 32,
+          "id": "8",
+          "weight": 698,
+        },
+        {
+          "age": 9999,
+          "id": "9",
+          "weight": 99999,
+        },
+        {
+          "age": 11,
+          "id": "10",
+          "weight": 0,
+        },
+      ]
+    }
+    getItem={[Function]}
+    getItemCount={[Function]}
+    keyExtractor={[Function]}
+    onContentSizeChange={[Function]}
+    onLayout={[Function]}
+    onMomentumScrollBegin={[Function]}
+    onMomentumScrollEnd={[Function]}
+    onScroll={[Function]}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={0.0001}
+    stickyHeaderIndices={[]}
+    style={
+      {
+        "height": "30%",
+      }
+    }
+    viewabilityConfigCallbackPairs={[]}
+  >
+    <View>
+      <View
+        onFocusCapture={[Function]}
+        onLayout={[Function]}
+        style={null}
+      >
+        <Text>
+          1
+        </Text>
+        <Text>
+          721
+        </Text>
+        <Text>
+          36
+        </Text>
+      </View>
+      <View
+        onFocusCapture={[Function]}
+        onLayout={[Function]}
+        style={null}
+      >
+        <Text>
+          2
+        </Text>
+        <Text>
+          682
+        </Text>
+        <Text>
+          30
+        </Text>
+      </View>
+      <View
+        onFocusCapture={[Function]}
+        onLayout={[Function]}
+        style={null}
+      >
+        <Text>
+          3
+        </Text>
+        <Text>
+          753
+        </Text>
+        <Text>
+          42
+        </Text>
+      </View>
+      <View
+        onFocusCapture={[Function]}
+        onLayout={[Function]}
+        style={null}
+      >
+        <Text>
+          4
+        </Text>
+        <Text>
+          694
+        </Text>
+        <Text>
+          28
+        </Text>
+      </View>
+      <View
+        onFocusCapture={[Function]}
+        onLayout={[Function]}
+        style={null}
+      >
+        <Text>
+          5
+        </Text>
+        <Text>
+          715
+        </Text>
+        <Text>
+          34
+        </Text>
+      </View>
+      <View
+        onFocusCapture={[Function]}
+        onLayout={[Function]}
+        style={null}
+      >
+        <Text>
+          6
+        </Text>
+        <Text>
+          656
+        </Text>
+        <Text>
+          26
+        </Text>
+      </View>
+      <View
+        onFocusCapture={[Function]}
+        onLayout={[Function]}
+        style={null}
+      >
+        <Text>
+          7
+        </Text>
+        <Text>
+          787
+        </Text>
+        <Text>
+          48
+        </Text>
+      </View>
+      <View
+        onFocusCapture={[Function]}
+        onLayout={[Function]}
+        style={null}
+      >
+        <Text>
+          8
+        </Text>
+        <Text>
+          698
+        </Text>
+        <Text>
+          32
+        </Text>
+      </View>
+      <View
+        onFocusCapture={[Function]}
+        onLayout={[Function]}
+        style={null}
+      >
+        <Text>
+          9
+        </Text>
+        <Text>
+          99999
+        </Text>
+        <Text>
+          9999
+        </Text>
+      </View>
+      <View
+        onFocusCapture={[Function]}
+        onLayout={[Function]}
+        style={null}
+      >
+        <Text>
+          10
+        </Text>
+        <Text>
+          0
+        </Text>
+        <Text>
+          11
+        </Text>
+      </View>
+    </View>
+  </RCTScrollView>
+</>
+`;

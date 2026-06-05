@@ -1,5 +1,6 @@
 import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context"
 import { Header } from "@/components/header/Header"
+import { ListView } from "@/components/list-view/ListView"
 
 export default function Index() {
   return (
@@ -12,6 +13,7 @@ export default function Index() {
         }}
       >
         <Header />
+        <ListView />
       </SafeAreaView>
     </SafeAreaProvider>
   )
