@@ -1,0 +1,11 @@
+# Ignore artifacts:
+eslint.config.js
+tsconfig.json
+app.json
+package.json
+package-lock.json
+# Ignore directories:
+ios/
+android/
+node_modules/
+assets/
