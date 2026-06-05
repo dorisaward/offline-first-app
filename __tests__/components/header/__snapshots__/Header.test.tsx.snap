@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the header renders 1`] = `
+<>
+  <View
+    style={
+      {
+        "alignItems": "center",
+        "flex": 1,
+      }
+    }
+  >
+    <Text
+      style={
+        {
+          "color": "#03296f",
+          "fontSize": 56,
+          "fontWeight": "700",
+        }
+      }
+    >
+      Tracker App
+    </Text>
+  </View>
+</>
+`;
