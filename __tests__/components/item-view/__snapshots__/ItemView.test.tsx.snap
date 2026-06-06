@@ -1,35 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders ItemView renders 1`] = `
+exports[`renders ItemView renders create 1`] = `
 <>
   <View
-    accessibilityState={
-      {
-        "busy": undefined,
-        "checked": undefined,
-        "disabled": undefined,
-        "expanded": undefined,
-        "selected": undefined,
-      }
-    }
-    accessibilityValue={
-      {
-        "max": undefined,
-        "min": undefined,
-        "now": undefined,
-        "text": undefined,
-      }
-    }
-    accessible={true}
-    collapsable={false}
-    focusable={true}
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
     style={
       {
         "backgroundColor": "#FFFFFF",
@@ -40,7 +13,225 @@ exports[`renders ItemView renders 1`] = `
         "flexDirection": "row",
         "marginBottom": 16,
         "marginHorizontal": 16,
-        "opacity": 1,
+        "padding": 16,
+      }
+    }
+  >
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "flex": 1,
+          "gap": 6,
+        }
+      }
+    >
+      <Text
+        style={
+          {
+            "color": "#6B7280",
+          }
+        }
+      >
+        ID
+      </Text>
+      <View>
+        <TextInput
+          keyboardType="default"
+          onChangeText={[Function]}
+          style={
+            {
+              "borderColor": "#03296f",
+              "borderRadius": 5,
+              "borderWidth": 1,
+              "color": "#111827",
+              "fontSize": 28,
+              "minWidth": "80%",
+            }
+          }
+          testID="id-input"
+        />
+      </View>
+    </View>
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "flex": 1,
+          "gap": 6,
+        }
+      }
+    >
+      <Text
+        style={
+          {
+            "color": "#6B7280",
+          }
+        }
+      >
+        Weight
+      </Text>
+      <View>
+        <TextInput
+          keyboardType="number-pad"
+          onChangeText={[Function]}
+          style={
+            {
+              "borderColor": "#03296f",
+              "borderRadius": 5,
+              "borderWidth": 1,
+              "color": "#111827",
+              "fontSize": 28,
+              "minWidth": "80%",
+            }
+          }
+          testID="weight-input"
+        />
+        <Text
+          style={
+            {
+              "alignSelf": "center",
+              "color": "#9CA3AF",
+            }
+          }
+        >
+          kg
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "flex": 1,
+          "gap": 6,
+        }
+      }
+    >
+      <Text
+        style={
+          {
+            "color": "#6B7280",
+          }
+        }
+      >
+        Age
+      </Text>
+      <View>
+        <TextInput
+          keyboardType="number-pad"
+          onChangeText={[Function]}
+          style={
+            {
+              "borderColor": "#03296f",
+              "borderRadius": 5,
+              "borderWidth": 1,
+              "color": "#111827",
+              "fontSize": 28,
+              "minWidth": "80%",
+            }
+          }
+          testID="age-input"
+        />
+        <Text
+          style={
+            {
+              "alignSelf": "center",
+              "color": "#9CA3AF",
+            }
+          }
+        >
+          months
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "flex": 1,
+          "gap": 6,
+        }
+      }
+    >
+      <View
+        style={
+          {
+            "gap": 8,
+          }
+        }
+      >
+        <View
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "backgroundColor": "#F3F4F6",
+              "borderRadius": 12,
+              "opacity": 1,
+              "padding": 8,
+              "paddingVertical": 10,
+            }
+          }
+        >
+          <Text
+            style={
+              {
+                "color": "#374151",
+                "fontSize": 14,
+                "fontWeight": "600",
+              }
+            }
+          >
+            Submit
+          </Text>
+        </View>
+      </View>
+    </View>
+  </View>
+</>
+`;
+
+exports[`renders ItemView renders view 1`] = `
+<>
+  <View
+    style={
+      {
+        "backgroundColor": "#FFFFFF",
+        "borderColor": "#03296f",
+        "borderRadius": 20,
+        "borderWidth": 1,
+        "flex": 1,
+        "flexDirection": "row",
+        "marginBottom": 16,
+        "marginHorizontal": 16,
         "padding": 16,
       }
     }
@@ -156,6 +347,128 @@ exports[`renders ItemView renders 1`] = `
         >
           months
         </Text>
+      </View>
+    </View>
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "flex": 1,
+          "gap": 6,
+        }
+      }
+    >
+      <View
+        style={
+          {
+            "gap": 8,
+          }
+        }
+      >
+        <View
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "backgroundColor": "#F3F4F6",
+              "borderRadius": 12,
+              "opacity": 1,
+              "padding": 8,
+              "paddingVertical": 10,
+            }
+          }
+        >
+          <Text
+            style={
+              {
+                "color": "#374151",
+                "fontSize": 14,
+                "fontWeight": "600",
+              }
+            }
+          >
+            Edit
+          </Text>
+        </View>
+        <View
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "backgroundColor": "#F3F4F6",
+              "borderRadius": 12,
+              "opacity": 1,
+              "padding": 8,
+              "paddingVertical": 10,
+            }
+          }
+        >
+          <Text
+            style={
+              {
+                "color": "#374151",
+                "fontSize": 14,
+                "fontWeight": "600",
+              }
+            }
+          >
+            Delete
+          </Text>
+        </View>
       </View>
     </View>
   </View>

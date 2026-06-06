@@ -27,15 +27,25 @@ export const ItemView = (props: ViewProps | CreateEditProps) => {
     if (!onChange || !id || !age || !weight) {
       return
     }
+    const parsedAge = parseInt(age)
+    const parsedWeight = parseInt(weight)
+    if (Number.isNaN(parsedAge)) {
+      console.error(`${age} should be a whole number`)
+      return
+    }
+    if (Number.isNaN(parsedWeight)) {
+      console.error(`${weight} should be a whole number`)
+      return
+    }
     try {
-      onChange({ id, age: Number(age), weight: Number(weight) })
+      onChange({ id, age: parsedAge, weight: parsedWeight })
     } catch (error) {
       // TODO: better error UX
       console.error(error)
     }
   }
   return (
-    <TouchableOpacity onPress={onPress} style={styles.container}>
+    <View style={styles.container}>
       <View style={styles.column}>
         <Text style={styles.label}>ID</Text>
         <View>
@@ -43,6 +53,7 @@ export const ItemView = (props: ViewProps | CreateEditProps) => {
             <Text style={styles.value}>{cattle.id}</Text>
           ) : (
             <TextInput
+              testID={"id-input"}
               keyboardType={"default"}
               style={styles.input}
               onChangeText={setId}
@@ -58,6 +69,7 @@ export const ItemView = (props: ViewProps | CreateEditProps) => {
             <Text style={styles.value}>{cattle.weight}</Text>
           ) : (
             <TextInput
+              testID={"weight-input"}
               keyboardType={"number-pad"}
               style={styles.input}
               onChangeText={setWeight}
@@ -74,6 +86,7 @@ export const ItemView = (props: ViewProps | CreateEditProps) => {
             <Text style={styles.value}>{cattle.age}</Text>
           ) : (
             <TextInput
+              testID={"age-input"}
               keyboardType={"number-pad"}
               style={styles.input}
               onChangeText={setAge}
@@ -82,7 +95,39 @@ export const ItemView = (props: ViewProps | CreateEditProps) => {
           <Text style={styles.unit}>months</Text>
         </View>
       </View>
-    </TouchableOpacity>
+
+      <View style={styles.column}>
+        <View style={styles.actions}>
+          {onChange && (
+            <TouchableOpacity
+              accessibilityRole={"button"}
+              style={styles.actionButton}
+              onPress={onPress}
+            >
+              <Text style={styles.actionButtonText}>Submit</Text>
+            </TouchableOpacity>
+          )}
+          {cattle && (
+            <>
+              <TouchableOpacity
+                accessibilityRole={"button"}
+                style={styles.actionButton}
+                onPress={() => {}}
+              >
+                <Text style={styles.actionButtonText}>Edit</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                accessibilityRole={"button"}
+                style={styles.actionButton}
+                onPress={() => {}}
+              >
+                <Text style={styles.actionButtonText}>Delete</Text>
+              </TouchableOpacity>
+            </>
+          )}
+        </View>
+      </View>
+    </View>
   )
 }
 
@@ -126,5 +171,23 @@ const styles = StyleSheet.create({
   unit: {
     color: "#9CA3AF",
     alignSelf: "center",
+  },
+
+  actions: {
+    gap: 8,
+  },
+
+  actionButton: {
+    paddingVertical: 10,
+    borderRadius: 12,
+    backgroundColor: "#F3F4F6",
+    alignItems: "center",
+    padding: 8,
+  },
+
+  actionButtonText: {
+    fontSize: 14,
+    fontWeight: "600",
+    color: "#374151",
   },
 })
