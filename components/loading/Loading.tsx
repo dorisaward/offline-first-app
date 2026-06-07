@@ -1,3 +1,7 @@
-import { Text } from "react-native"
+import { ActivityIndicator, View } from "react-native"
 
-export const Loading = () => <Text>Loading</Text>
+export const Loading = () => (
+  <View>
+    <ActivityIndicator size='large' />
+  </View>
+)

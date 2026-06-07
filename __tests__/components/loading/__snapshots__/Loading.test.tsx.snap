@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders loading renders loading 1`] = `
+<>
+  <View>
+    <ActivityIndicator
+      size="large"
+    />
+  </View>
+</>
+`;
