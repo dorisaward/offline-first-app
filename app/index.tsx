@@ -1,13 +1,13 @@
 import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context"
 import { Header } from "@/components/header/Header"
 import { ListView } from "@/components/list-view/ListView"
-import { ItemView } from "@/components/item-view/ItemView"
-import { useState } from "react"
-import { Cattle } from "@/cattle/Cattle"
+import { Suspense } from "react"
+import { SQLiteProvider } from "expo-sqlite"
+import { Loading } from "@/components/loading/Loading"
+import { DB_NAME, migrateDbIfNeeded } from "@/cattle/db"
+import { CreateItem } from "@/components/item-view/CreateItem"
 
 export default function Index() {
-  const [cattle, setCattle] = useState<Cattle | undefined>(undefined)
-  console.log(cattle)
   return (
     <SafeAreaProvider>
       <SafeAreaView
@@ -18,8 +18,16 @@ export default function Index() {
         }}
       >
         <Header />
-        <ItemView onChange={setCattle} />
-        <ListView />
+        <Suspense fallback={<Loading />}>
+          <SQLiteProvider
+            databaseName={DB_NAME}
+            onInit={migrateDbIfNeeded}
+            useSuspense={true}
+          >
+            <CreateItem />
+            <ListView />
+          </SQLiteProvider>
+        </Suspense>
       </SafeAreaView>
     </SafeAreaProvider>
   )
