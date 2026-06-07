@@ -21,6 +21,13 @@ jest.mock("@/components/item-view/ItemView", () => ({
     )
   },
 }))
+const mockCreateItemText = "mock create item"
+jest.mock("@/components/item-view/CreateItem", () => ({
+  CreateItem: () => {
+    const MockText = require("react-native").Text
+    return <MockText>{mockCreateItemText}</MockText>
+  },
+}))
 
 describe("renders ListView", () => {
   it("renders", async () => {
@@ -39,6 +46,6 @@ describe("renders ListView", () => {
       expect(screen.getByText(cattle.weight.toString())).toBeTruthy()
       expect(screen.getByText(cattle.age.toString())).toBeTruthy()
     })
-    expect(screen.container.toJSON()).toMatchSnapshot()
+    expect(screen.getByText(mockCreateItemText)).toBeTruthy()
   })
 })

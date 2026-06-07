@@ -15,13 +15,6 @@ jest.mock("@/components/list-view/ListView", () => {
     ListView: () => <MockText>{mockListText}</MockText>,
   }
 })
-const mockCreateText = "mock create"
-jest.mock("@/components/item-view/CreateItem", () => {
-  const MockText = require("react-native").Text
-  return {
-    CreateItem: () => <MockText>{mockCreateText}</MockText>,
-  }
-})
 const mockLoadingText = "mock loading"
 jest.mock("@/components/loading/Loading", () => {
   const MockText = require("react-native").Text
@@ -54,6 +47,5 @@ describe("renders root of project", () => {
     // Then
     expect(screen.getByText(mockHeaderText)).toBeTruthy()
     expect(screen.getByText(mockListText)).toBeTruthy()
-    expect(screen.getByText(mockCreateText)).toBeTruthy()
   })
 })

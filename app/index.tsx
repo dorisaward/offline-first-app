@@ -5,7 +5,6 @@ import { Suspense } from "react"
 import { SQLiteProvider } from "expo-sqlite"
 import { Loading } from "@/components/loading/Loading"
 import { DB_NAME, migrateDbIfNeeded } from "@/cattle/db"
-import { CreateItem } from "@/components/item-view/CreateItem"
 
 export default function Index() {
   return (
@@ -24,7 +23,6 @@ export default function Index() {
             onInit={migrateDbIfNeeded}
             useSuspense={true}
           >
-            <CreateItem />
             <ListView />
           </SQLiteProvider>
         </Suspense>

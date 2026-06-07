@@ -1,5 +1,5 @@
 import { CreateItem } from "@/components/item-view/CreateItem"
-import { render, screen, userEvent } from "@testing-library/react-native"
+import { render, screen } from "@testing-library/react-native"
 import { Cattle } from "@/cattle/Cattle"
 import { SQLiteProvider } from "expo-sqlite"
 import { DB_NAME } from "@/cattle/db"
@@ -15,11 +15,12 @@ jest.mock("@/components/item-view/ItemView", () => ({
 describe("renders CreateItem", () => {
   it("renders ItemView", async () => {
     // Given
+    const shouldRefresh = jest.fn()
 
     // When
     await render(
       <SQLiteProvider databaseName={DB_NAME}>
-        <CreateItem />
+        <CreateItem shouldRefresh={shouldRefresh} />
       </SQLiteProvider>,
     )
 
