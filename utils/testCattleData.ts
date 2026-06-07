@@ -1,4 +1,4 @@
-import { Cattle } from "@/cattle/Cattle"
+import { Cattle } from "@/utils/Cattle"
 
 export const testCattleData: Cattle[] = [
   { id: "1", weight: 721, age: 36 },

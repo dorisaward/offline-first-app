@@ -1,7 +1,7 @@
 import { useSQLiteContext } from "expo-sqlite"
 import { ItemView } from "@/components/item-view/ItemView"
-import { Cattle } from "@/cattle/Cattle"
-import { createACattle } from "@/cattle/db"
+import { Cattle } from "@/utils/Cattle"
+import { createACattle } from "@/db/cattle"
 
 export const CreateItem = ({
   shouldRefresh,

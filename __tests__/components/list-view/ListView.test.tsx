@@ -1,11 +1,11 @@
 import { ListView } from "@/components/list-view/ListView"
 import { render, screen } from "@testing-library/react-native"
-import { Cattle } from "@/cattle/Cattle"
-import { testCattleData as mockCattleData } from "@/cattle/testCattleData"
-import { DB_NAME } from "@/cattle/db"
+import { Cattle } from "@/utils/Cattle"
+import { testCattleData as mockCattleData } from "@/utils/testCattleData"
+import { DB_NAME } from "@/db/db"
 import { SQLiteProvider } from "expo-sqlite"
 
-jest.mock("@/cattle/db", () => ({
+jest.mock("@/db/cattle", () => ({
   readAllCattle: jest.fn(() => mockCattleData),
 }))
 

@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
 } from "react-native"
 import { useState } from "react"
-import { Cattle } from "@/cattle/Cattle"
+import { Cattle } from "@/utils/Cattle"
 
 interface ViewProps {
   cattle: Cattle

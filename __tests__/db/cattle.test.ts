@@ -1,30 +1,12 @@
-import {
-  DB_NAME,
-  createACattle,
-  migrateDbIfNeeded,
-  readAllCattle,
-} from "@/cattle/db"
-import { testCattleData } from "@/cattle/testCattleData"
-import { openDatabaseAsync, SQLiteDatabase } from "expo-sqlite"
-import * as testHelpers from "@/cattle/testHelpers"
+import { SQLiteDatabase } from "expo-sqlite"
+import * as testHelpers from "@/utils/testHelpers"
+import { testCattleData } from "@/utils/testCattleData"
+import { createACattle, readAllCattle } from "@/db/cattle"
 
 let db: SQLiteDatabase
 
 beforeEach(async () => {
   db = await testHelpers.initTestDb()
-})
-
-// Having trouble spying on expo-sqlite while using expo-sqlite-mock
-describe.skip("migrateDbIfNeeded", () => {
-  it("creates db", async () => {
-    // Given
-
-    // When
-    await migrateDbIfNeeded(db)
-
-    // Then
-    expect(openDatabaseAsync).toHaveBeenCalledWith(DB_NAME)
-  })
 })
 
 describe("createACattle", () => {
@@ -35,6 +17,34 @@ describe("createACattle", () => {
 
     // When
     await createACattle(db, cattle)
+
+    // Then
+    const allCattle = await readAllCattle(db)
+    expect(allCattle).toHaveLength(1)
+    expect(allCattle[0]).toEqual(cattle)
+  })
+  it("does not create a cattle, given a cattle of same id already exists", async () => {
+    // Given
+    await testHelpers.initCattleTable(db)
+    const cattle = testCattleData[0]
+    await createACattle(db, cattle)
+
+    // When
+    try {
+      await createACattle(db, cattle)
+      fail("did not throw expected error")
+
+      // Then
+    } catch (e) {
+      expect(e).toBeInstanceOf(Error)
+      if ((e as Error)["message"]) {
+        expect((e as Error).message).toEqual(
+          "UNIQUE constraint failed: cattle.id",
+        )
+      } else {
+        fail("error does not have key message")
+      }
+    }
 
     // Then
     const allCattle = await readAllCattle(db)

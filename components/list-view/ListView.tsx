@@ -1,9 +1,9 @@
 import { FlatList, StyleSheet } from "react-native"
 import { useSQLiteContext } from "expo-sqlite"
-import { Cattle } from "@/cattle/Cattle"
+import { Cattle } from "@/utils/Cattle"
 import { ItemView } from "@/components/item-view/ItemView"
 import { useCallback, useEffect, useState } from "react"
-import { readAllCattle } from "@/cattle/db"
+import { readAllCattle } from "@/db/cattle"
 import { CreateItem } from "@/components/item-view/CreateItem"
 
 export const ListView = () => {
@@ -18,7 +18,7 @@ export const ListView = () => {
       const cattleData = await readAllCattle(db)
       setAllCattle([...cattleData])
     } catch (error) {
-      console.error("Error loading cattle:", error)
+      console.error("Error loading utils:", error)
     } finally {
       setRefreshing(false)
     }

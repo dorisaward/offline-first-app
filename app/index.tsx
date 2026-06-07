@@ -4,7 +4,7 @@ import { ListView } from "@/components/list-view/ListView"
 import { Suspense } from "react"
 import { SQLiteProvider } from "expo-sqlite"
 import { Loading } from "@/components/loading/Loading"
-import { DB_NAME, migrateDbIfNeeded } from "@/cattle/db"
+import { DB_NAME, migrateDbIfNeeded } from "@/db/db"
 
 export default function Index() {
   return (

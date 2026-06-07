@@ -1,6 +1,6 @@
 import { ItemView } from "@/components/item-view/ItemView"
 import { render, screen, userEvent } from "@testing-library/react-native"
-import { Cattle } from "@/cattle/Cattle"
+import { Cattle } from "@/utils/Cattle"
 
 jest.spyOn(console, "error")
 

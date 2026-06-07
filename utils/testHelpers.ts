@@ -1,10 +1,11 @@
-import { DB_NAME, TABLE_NAME } from "@/cattle/db"
-import { testCattleData } from "@/cattle/testCattleData"
+import { DB_NAME } from "@/db/db"
+import { testCattleData } from "@/utils/testCattleData"
 import {
   openDatabaseAsync,
   SQLiteBindParams,
   SQLiteDatabase,
 } from "expo-sqlite"
+import { TABLE_NAME } from "@/db/cattle"
 
 export const addTestDataToDb = async (db: SQLiteDatabase) => {
   const placeholders: string[] = []

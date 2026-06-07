@@ -1,8 +1,8 @@
 import { CreateItem } from "@/components/item-view/CreateItem"
 import { render, screen } from "@testing-library/react-native"
-import { Cattle } from "@/cattle/Cattle"
+import { Cattle } from "@/utils/Cattle"
 import { SQLiteProvider } from "expo-sqlite"
-import { DB_NAME } from "@/cattle/db"
+import { DB_NAME } from "@/db/db"
 
 const mockItemViewText = "mock-item-view-text"
 jest.mock("@/components/item-view/ItemView", () => ({
