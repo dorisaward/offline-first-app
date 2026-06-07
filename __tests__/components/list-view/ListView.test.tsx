@@ -1,7 +1,13 @@
 import { ListView } from "@/components/list-view/ListView"
 import { render, screen } from "@testing-library/react-native"
 import { Cattle } from "@/cattle/Cattle"
-import { testCattleData } from "@/cattle/testCattleData"
+import { testCattleData as mockCattleData } from "@/cattle/testCattleData"
+import { DB_NAME } from "@/cattle/db"
+import { SQLiteProvider } from "expo-sqlite"
+
+jest.mock("@/cattle/db", () => ({
+  readAllCattle: jest.fn(() => mockCattleData),
+}))
 
 jest.mock("@/components/item-view/ItemView", () => ({
   ItemView: ({ cattle }: { cattle: Cattle }) => {
@@ -19,11 +25,16 @@ jest.mock("@/components/item-view/ItemView", () => ({
 describe("renders ListView", () => {
   it("renders", async () => {
     // Given
-    await render(<ListView />)
 
     // When
+    await render(
+      <SQLiteProvider databaseName={DB_NAME}>
+        <ListView />
+      </SQLiteProvider>,
+    )
+
     // Then
-    testCattleData.forEach((cattle) => {
+    mockCattleData.forEach((cattle) => {
       expect(screen.getByText(cattle.id)).toBeTruthy()
       expect(screen.getByText(cattle.weight.toString())).toBeTruthy()
       expect(screen.getByText(cattle.age.toString())).toBeTruthy()

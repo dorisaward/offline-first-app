@@ -1,5 +1,5 @@
 import App from "@/app/index"
-import { render, screen } from "@testing-library/react-native"
+import { render, screen, waitFor } from "@testing-library/react-native"
 
 const mockHeaderText = "mock header"
 jest.mock("@/components/header/Header", () => {
@@ -8,14 +8,52 @@ jest.mock("@/components/header/Header", () => {
     Header: () => <MockText>{mockHeaderText}</MockText>,
   }
 })
+const mockListText = "mock list"
+jest.mock("@/components/list-view/ListView", () => {
+  const MockText = require("react-native").Text
+  return {
+    ListView: () => <MockText>{mockListText}</MockText>,
+  }
+})
+const mockCreateText = "mock create"
+jest.mock("@/components/item-view/CreateItem", () => {
+  const MockText = require("react-native").Text
+  return {
+    CreateItem: () => <MockText>{mockCreateText}</MockText>,
+  }
+})
+const mockLoadingText = "mock loading"
+jest.mock("@/components/loading/Loading", () => {
+  const MockText = require("react-native").Text
+  return {
+    Loading: () => <MockText>{mockLoadingText}</MockText>,
+  }
+})
 
 describe("renders root of project", () => {
-  it("renders", async () => {
+  it("renders loading", async () => {
     // Given
     await render(<App />)
 
     // When
+
     // Then
     expect(screen.getByText(mockHeaderText)).toBeTruthy()
+    expect(screen.getByText(mockLoadingText)).toBeTruthy()
+  })
+  it("renders create item and list view", async () => {
+    // Given
+    await render(<App />)
+
+    // When
+    await waitFor(
+      async () => expect(screen.queryByText(mockLoadingText)).toBeFalsy(),
+      { timeout: 3000 },
+    )
+
+    // Then
+    expect(screen.getByText(mockHeaderText)).toBeTruthy()
+    expect(screen.getByText(mockListText)).toBeTruthy()
+    expect(screen.getByText(mockCreateText)).toBeTruthy()
   })
 })
