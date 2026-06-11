@@ -1,6 +1,7 @@
 import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context"
 import { Header } from "@/components/header/Header"
 import { ListView } from "@/components/list-view/ListView"
+import { NetworkBar } from "@/components/network-bar/NetworkBar"
 import { Suspense } from "react"
 import { SQLiteProvider } from "expo-sqlite"
 import { Loading } from "@/components/loading/Loading"
@@ -24,6 +25,7 @@ export default function Index() {
             useSuspense={true}
           >
             <ListView />
+            <NetworkBar />
           </SQLiteProvider>
         </Suspense>
       </SafeAreaView>
