@@ -4,8 +4,10 @@ import { testCattleData } from "@/utils/testCattleData"
 import { createSyncForCattle, syncUnsyncdRecords } from "@/db/sync"
 import { Sync } from "@/utils/Sync"
 import { TABLE_NAME } from "@/db/db"
+import * as BE from "@/utils/fakeBE"
 
 jest.spyOn(console, "log")
+const mockBE = jest.spyOn(BE, "fakeBE")
 
 let db: SQLiteDatabase
 
@@ -67,5 +69,33 @@ describe("syncUnsyncdRecords", () => {
 
     // Then
     expect(console.log).toHaveBeenCalledWith("Nothing to sync")
+  })
+  it("syncs, given cattle to sync", async () => {
+    // Given
+    await testHelpers.addTestDataToDb(db)
+    const cattle = testCattleData[0]
+    mockBE.mockImplementation(
+      jest
+        .fn()
+        .mockResolvedValue({ successfulIds: [cattle.id], unsuccessfulIds: [] }),
+    )
+    await createSyncForCattle(db, cattle)
+
+    // When
+    await syncUnsyncdRecords(db)
+
+    // Then
+    const expectedSync: Omit<Sync, "hasSynchronised"> & {
+      hasSynchronised: 0 | 1
+    } = {
+      id: expect.any(String),
+      tableName: TABLE_NAME,
+      recordId: cattle.id,
+      timeAddedToSyncQueue: expect.any(Number),
+      retryCount: 0,
+      hasSynchronised: 1,
+    }
+    const result = await testHelpers.selectAllSyncTableData(db)
+    expect(result).toEqual([expectedSync])
   })
 })
