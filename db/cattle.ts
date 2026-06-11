@@ -1,7 +1,6 @@
 import { SQLiteDatabase } from "expo-sqlite"
 import { Cattle } from "@/utils/Cattle"
-
-export const TABLE_NAME = "cattle"
+import { TABLE_NAME } from "@/db/db"
 
 export const readAllCattle = (db: SQLiteDatabase) =>
   db.getAllAsync<Cattle>(`SELECT * FROM ${TABLE_NAME}`)
