@@ -1,14 +1,12 @@
 import { NetworkBar } from "@/components/network-bar/NetworkBar"
 import * as NetInfo from "@react-native-community/netinfo"
-import { render, screen } from "@testing-library/react-native"
+import { render, screen, waitFor } from "@testing-library/react-native"
 import { DB_NAME } from "@/db/db"
 import { SQLiteProvider } from "expo-sqlite"
+import * as sync from "@/db/sync"
 
-const mockNetInfo = jest.spyOn(NetInfo, "useNetInfoInstance")
-
-jest.mock("@/db/sync", () => ({
-  syncUnsyncdRecords: jest.fn(),
-}))
+const mockNetInfo = jest.spyOn(NetInfo, "useNetInfo")
+const mockSyncUnsyncdRecords = jest.spyOn(sync, "syncUnsyncdRecords")
 
 describe("renders NetworkBar", () => {
   it.each([null, false])(
@@ -16,13 +14,10 @@ describe("renders NetworkBar", () => {
     async (isConnected) => {
       // Given
       mockNetInfo.mockImplementation(() => ({
-        netInfo: {
-          type: NetInfo.NetInfoStateType.unknown,
-          isConnected,
-          isInternetReachable: null,
-          details: null,
-        },
-        refresh: jest.fn(),
+        type: NetInfo.NetInfoStateType.unknown,
+        isConnected,
+        isInternetReachable: null,
+        details: null,
       }))
 
       // When
@@ -39,13 +34,10 @@ describe("renders NetworkBar", () => {
   it("renders Connected, given connected", async () => {
     // Given
     mockNetInfo.mockImplementation(() => ({
-      netInfo: {
-        type: NetInfo.NetInfoStateType.unknown,
-        isConnected: true,
-        isInternetReachable: null,
-        details: null,
-      },
-      refresh: jest.fn(),
+      type: NetInfo.NetInfoStateType.unknown,
+      isConnected: true,
+      isInternetReachable: null,
+      details: null,
     }))
 
     // When
@@ -60,14 +52,14 @@ describe("renders NetworkBar", () => {
   })
   it("renders Synchronising, given synchronising", async () => {
     // Given
+    mockSyncUnsyncdRecords.mockImplementation(
+      () => new Promise((resolve) => setTimeout(resolve, 100)),
+    )
     mockNetInfo.mockImplementation(() => ({
-      netInfo: {
-        type: NetInfo.NetInfoStateType.unknown,
-        isConnected: true,
-        isInternetReachable: null,
-        details: null,
-      },
-      refresh: jest.fn(),
+      type: NetInfo.NetInfoStateType.unknown,
+      isConnected: true,
+      isInternetReachable: null,
+      details: null,
     }))
 
     // When
@@ -78,6 +70,9 @@ describe("renders NetworkBar", () => {
     )
 
     // Then
+    await waitFor(async () =>
+      expect(screen.queryByText("Network Bar - Connected")).toBeFalsy(),
+    )
     expect(screen.getByText("Network Bar - Synchronising")).toBeTruthy()
   })
 })
