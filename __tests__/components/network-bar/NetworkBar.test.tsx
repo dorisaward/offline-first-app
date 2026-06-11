@@ -1,29 +1,23 @@
 import { NetworkBar } from "@/components/network-bar/NetworkBar"
-import * as NetInfo from "@react-native-community/netinfo"
 import { render, screen, waitFor } from "@testing-library/react-native"
 import { DB_NAME } from "@/db/db"
 import { SQLiteProvider } from "expo-sqlite"
-import * as sync from "@/db/sync"
-
-const mockNetInfo = jest.spyOn(NetInfo, "useNetInfo")
-const mockSyncUnsyncdRecords = jest.spyOn(sync, "syncUnsyncdRecords")
 
 describe("renders NetworkBar", () => {
   it.each([null, false])(
     "renders Not Connected, given isConnected %p",
     async (isConnected) => {
       // Given
-      mockNetInfo.mockImplementation(() => ({
-        type: NetInfo.NetInfoStateType.unknown,
+      const props = {
         isConnected,
-        isInternetReachable: null,
-        details: null,
-      }))
+        synchronising: false,
+        syncCattle: jest.fn(),
+      }
 
       // When
       await render(
         <SQLiteProvider databaseName={DB_NAME}>
-          <NetworkBar />
+          <NetworkBar {...props} />
         </SQLiteProvider>,
       )
 
@@ -33,17 +27,16 @@ describe("renders NetworkBar", () => {
   )
   it("renders Connected, given connected", async () => {
     // Given
-    mockNetInfo.mockImplementation(() => ({
-      type: NetInfo.NetInfoStateType.unknown,
+    const props = {
       isConnected: true,
-      isInternetReachable: null,
-      details: null,
-    }))
+      synchronising: false,
+      syncCattle: jest.fn(),
+    }
 
     // When
     await render(
       <SQLiteProvider databaseName={DB_NAME}>
-        <NetworkBar />
+        <NetworkBar {...props} />
       </SQLiteProvider>,
     )
 
@@ -52,20 +45,16 @@ describe("renders NetworkBar", () => {
   })
   it("renders Synchronising, given synchronising", async () => {
     // Given
-    mockSyncUnsyncdRecords.mockImplementation(
-      () => new Promise((resolve) => setTimeout(resolve, 100)),
-    )
-    mockNetInfo.mockImplementation(() => ({
-      type: NetInfo.NetInfoStateType.unknown,
+    const props = {
       isConnected: true,
-      isInternetReachable: null,
-      details: null,
-    }))
+      synchronising: true,
+      syncCattle: jest.fn(),
+    }
 
     // When
     await render(
       <SQLiteProvider databaseName={DB_NAME}>
-        <NetworkBar />
+        <NetworkBar {...props} />
       </SQLiteProvider>,
     )
 

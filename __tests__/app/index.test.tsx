@@ -1,11 +1,11 @@
 import App from "@/app/index"
 import { render, screen, waitFor } from "@testing-library/react-native"
 
-const mockNetworkBarText = "mock network bar"
-jest.mock("@/components/network-bar/NetworkBar", () => {
+const mockBodyText = "mock body"
+jest.mock("@/components/app/App", () => {
   const MockText = require("react-native").Text
   return {
-    NetworkBar: () => <MockText>{mockNetworkBarText}</MockText>,
+    App: () => <MockText>{mockBodyText}</MockText>,
   }
 })
 const mockHeaderText = "mock header"
@@ -13,13 +13,6 @@ jest.mock("@/components/header/Header", () => {
   const MockText = require("react-native").Text
   return {
     Header: () => <MockText>{mockHeaderText}</MockText>,
-  }
-})
-const mockListText = "mock list"
-jest.mock("@/components/list-view/ListView", () => {
-  const MockText = require("react-native").Text
-  return {
-    ListView: () => <MockText>{mockListText}</MockText>,
   }
 })
 const mockLoadingText = "mock loading"
@@ -53,7 +46,6 @@ describe("renders root of project", () => {
 
     // Then
     expect(screen.getByText(mockHeaderText)).toBeTruthy()
-    expect(screen.getByText(mockListText)).toBeTruthy()
-    expect(screen.getByText(mockNetworkBarText)).toBeTruthy()
+    expect(screen.getByText(mockBodyText)).toBeTruthy()
   })
 })

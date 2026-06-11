@@ -32,11 +32,16 @@ jest.mock("@/components/item-view/CreateItem", () => ({
 describe("renders ListView", () => {
   it("renders", async () => {
     // Given
+    const props = {
+      isConnected: true,
+      synchronising: true,
+      syncCattle: jest.fn(),
+    }
 
     // When
     await render(
       <SQLiteProvider databaseName={DB_NAME}>
-        <ListView />
+        <ListView {...props} />
       </SQLiteProvider>,
     )
 

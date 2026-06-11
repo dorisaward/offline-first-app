@@ -5,8 +5,9 @@ import { ItemView } from "@/components/item-view/ItemView"
 import { useCallback, useEffect, useState } from "react"
 import { readAllCattle } from "@/db/cattle"
 import { CreateItem } from "@/components/item-view/CreateItem"
+import { useCattleSync } from "@/components/app/useCattleSync"
 
-export const ListView = () => {
+export const ListView = ({ syncCattle }: ReturnType<typeof useCattleSync>) => {
   const db = useSQLiteContext()
   const [allCattle, setAllCattle] = useState<Cattle[]>([])
   const [shouldRefresh, setShouldRefresh] = useState<boolean>(false)
@@ -22,11 +23,17 @@ export const ListView = () => {
     } finally {
       setRefreshing(false)
     }
-  }, [db, shouldRefresh])
+  }, [db])
 
   useEffect(() => {
     loadCattle()
-  }, [loadCattle])
+  }, [loadCattle, shouldRefresh])
+
+  useEffect(() => {
+    if (!refreshing) {
+      syncCattle()
+    }
+  }, [syncCattle, refreshing])
 
   const keyExtractor = (item: Cattle) => item.id
   return (
